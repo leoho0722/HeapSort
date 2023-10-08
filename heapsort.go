@@ -13,7 +13,7 @@ func HeapSort(ary []int) {
 
 	// 建立 Max Heap
 	for i := start; i > -1; i-- {
-		heap(ary, i, end-1)
+		siftdown(ary, i, end-1)
 	}
 
 	// 針對未排序的部分進行排序，並透過迭代將 Max Heap 轉換成 Min Heap
@@ -23,18 +23,18 @@ func HeapSort(ary []int) {
 
 		// 重新調整 Heap 並縮小範圍
 		// Heap 內不包含先前已排序好的元素 (最大元素會放到陣列最後面)
-		heap(ary, 0, i-1)
+		siftdown(ary, 0, i-1)
 	}
 }
 
-// heap 是一個用來將以 i 為根節點的子樹轉換為 Max Heap 的遞迴函式
+// siftdown 是一個用來將以 i 為根節點的子樹轉換為 Max Heap 的遞迴函式
 //
 // Parameters:
 //
 //	ary: 要調整的 Heap 陣列
 //	index: 要調整的節點的 index
 //	end: Heap 陣列的最後一個元素的 index
-func heap(ary []int, index, end int) {
+func siftdown(ary []int, index, end int) {
 	left := 2*index + 1 // 左子節點的 index
 
 	// 如果左子節點超出 Heap 的範圍，則返回
@@ -59,7 +59,7 @@ func heap(ary []int, index, end int) {
 	ary[node], ary[index] = ary[index], ary[node]
 
 	// 遞迴調整子樹
-	heap(ary, node, end)
+	siftdown(ary, node, end)
 }
 
 func main() {
