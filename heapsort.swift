@@ -1,4 +1,4 @@
-/// 對給定的陣列 ary 進行堆排序
+/// 對給定的陣列 ary 進行 Heap Sort
 /// - Parameters:
 ///   - input: 要排序的陣列
 func heapSort(input ary: inout [Int]) {
