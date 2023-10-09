@@ -6,15 +6,6 @@ def heapsort(ary):
         ary: 要進行 Heap Sort 的陣列
     """
 
-    # 建立 Max Heap
-    for start in range((len(ary) - 2)):
-        siftdown(start, len(ary) - 1)
-    
-    # Heap Sort
-    for end in range(len(ary) - 1, 0, -1):
-        ary[0], ary[end] = ary[end], ary[0]
-        siftdown(0, end - 1)
-
     def siftdown(start, end):
         """
         siftdown 是一個用來將以 i 為根節點的子樹轉換為 Max Heap 的遞迴函式
@@ -38,7 +29,17 @@ def heapsort(ary):
             else:
                 break
 
+    # 建立 Max Heap
+    for start in range((len(ary) - 2)):
+        siftdown(start, len(ary) - 1)
+
+    # Heap Sort
+    for end in range(len(ary) - 1, 0, -1):
+        ary[0], ary[end] = ary[end], ary[0]
+        siftdown(0, end - 1)
+
     return ary
+
 
 if __name__ == "__main__":
     ary = [55, 94, 87, 1, 4, 32, 11]
